@@ -1,0 +1,17 @@
+Here's the data for project #2, see the "sprial.json" file. 
+This is the format data will be in. We'll be assessing the project with a different data set in the same format,
+so please code in a way where it's easy to drop in another file in the same format.
+I don't think you'll need to,
+but if you do any pre-processing on the data before it can be visualized 
+please include that code and simple instructions for how to run it.
+
+As a simple sanity check: this test data is a set of points which form a loose "spiral" in the z axis. 
+Point numbers (seen in the "name" field) will be generally ascending along the Z axis. 
+Looking at it in the XY plane you should see a "ring" kind of shape, 
+and looking at it in the XZ or YZ plane you should see a sort of sinusoidal shape. 
+A plot of the latter view should be included. Note that the axes in the included plot are non-uniform, 
+so it will probably render much more stretched out along the z-axis for you. 
+If you want to include support for non-uniform axis scales that would be cool and probably worth a few bonus points
+ but it's not a requirement.
+
+Let me (Ryan, reachable at rjenkins@mail.sfsu.edu) know if you have any questions.
