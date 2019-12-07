@@ -9023,15 +9023,16 @@ console.log(data[i]);
     //CREATING THE CUBE-----------------------------------------------------------------------------------------------
     var geometry = new THREE.BoxGeometry( 1, 1, 1);
     var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-    var cube = new THREE.Mesh( geometry, material );
-    cube.position.x = data[i].x
-    cube.position.y = data[i].y
-    cube.position.z = data[i].z
-    cube.scale.x = 0.1;
-    cube.scale.y = 0.1;
-    cube.scale.z = 0.1;
+    // var cube = new THREE.Mesh( geometry, material );
+    var point = new THREE.Points(geometry, material);
+    point.position.x = data[i].x
+    point.position.y = data[i].y
+    point.position.z = data[i].z
+    point.scale.x = 0.1;
+    point.scale.y = 0.1;
+    point.scale.z = 0.1;
 
-    scene.add( cube ); 
+    scene.add( point ); 
  }
 
 camera.position.z = 50;
