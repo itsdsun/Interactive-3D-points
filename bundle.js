@@ -9014,13 +9014,20 @@ var renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
-const movement = new OrbitControls(camera, renderer.domElement);
+const controls = new OrbitControls(camera, renderer.domElement);
 
+//     controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
+//         controls.dampingFactor = 0.05;
+//         controls.screenSpacePanning = false;
+//         controls.minDistance = 100;
+//         controls.maxDistance = 500;
+//         controls.maxPolarAngle = Math.PI / 2;
+        
 
 for (let i = 0; i < data.length; i++) {
 console.log(data[i]);
     
-    //CREATING THE CUBE-----------------------------------------------------------------------------------------------
+    //CREATING THE POINTs-----------------------------------------------------------------------------------------------
     var geometry = new THREE.BoxGeometry( 1, 1, 1);
     var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
     // var cube = new THREE.Mesh( geometry, material );
@@ -9046,6 +9053,8 @@ function animate() {
     // cube.rotation.y += 0.01;
 }
 animate();
+
+
 },{"./Project 2 Data/spiral.json":1,"three":4,"three-orbitcontrols":3}],3:[function(require,module,exports){
 /* three-orbitcontrols addendum */ var THREE = require('three');
 /**
