@@ -1,0 +1,26 @@
+{
+  "name": "664proj",
+  "version": "1.0.0",
+  "description": "Final Project for Multimedia Systems -- Fall 19",
+  "main": "cube.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bundle": "browserify cube.js -o bundle.js"
+  },
+  "dependencies": {
+    "browserify": "^16.5.0",
+    "three": "^0.111.0",
+    "three-orbitcontrols": "^2.110.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itsdsun/664proj.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/itsdsun/664proj/issues"
+  },
+  "homepage": "https://github.com/itsdsun/664proj#readme"
+}
