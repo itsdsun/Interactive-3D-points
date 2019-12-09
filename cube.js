@@ -6,6 +6,9 @@ var scene, camera, renderer;
 var mesh;
 var meshObjects = [];
 
+var raycaster = new THREE.Raycaster();
+var mouse = new THREE.Vector2(), intersection;
+
 // var raycaster = new THREE.Raycaster();
 // var highlightBox;
 
@@ -77,9 +80,9 @@ window.onload = function() {
     init();
     animate();
 
-//  function render(){
-    var raycaster = new THREE.Raycaster();
-    var mouse = new THREE.Vector2();
+// //  function render(){
+//     var raycaster = new THREE.Raycaster();
+//     var mouse = new THREE.Vector2(), intersection;
  
     // Handle all clicks to determine of a three.js object was clicked and trigger its callback
     function onDocumentMouseDown(event) {
@@ -109,6 +112,7 @@ window.onload = function() {
     }
     document.addEventListener('mousedown', onDocumentMouseDown, false);
 
+
     // Using the same logic as above, determine if we are currently mousing over a three.js object,
     // and adjust the animation to provide visual feedback accordingly
     function onDocumentMouseMove(event) {
@@ -120,7 +124,7 @@ window.onload = function() {
         var intersects = raycaster.intersectObjects(meshObjects);
         for( var i = 0; i < intersects.length; i++ ) {
             var intersection = intersects[ i ];
-            if(intersects.length>0){
+             if(intersects.length>0){
                  intersects[i].object.material = new THREE.MeshBasicMaterial({ color: 0xffffff});
             }else  { // there are no intersections
               // restore previous intersection object (if it exists) to its original color
@@ -128,9 +132,20 @@ window.onload = function() {
                 intersects[i].object.material = new THREE.MeshNormalMaterial();
               // remove previous intersection object reference
               // by setting current intersection object to "nothing"
-              intersection = null;
+                intersection = null;
             //   }
           }
+        //     if(intersects.length>0){
+        //          intersects[i].object.material = new THREE.MeshBasicMaterial({ color: 0xffffff});
+        //     }else  { // there are no intersections
+        //       // restore previous intersection object (if it exists) to its original color
+        //     //   if ( intersects[0] ){
+        //         intersects[i].object.material = new THREE.MeshNormalMaterial();
+        //       // remove previous intersection object reference
+        //       // by setting current intersection object to "nothing"
+        //       intersection = null;
+        //     //   }
+        //   }
         }
         // if (intersects.length > 0){
             
@@ -139,6 +154,7 @@ window.onload = function() {
  
     }
  
-    // document.addEventListener('mousedown', onDocumentMouseDown, false);
-    document.addEventListener('mousemove', onDocumentMouseMove, false);
+    // document.addEventListener('mousemove', onDocumentMouseMove, false);
+    renderer.domElement.addEventListener('mousemove', onDocumentMouseMove, false);
+
 };
