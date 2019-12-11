@@ -7,13 +7,10 @@ const interactionTest = require("three.interaction");
 //declare variables
 var scene, camera, renderer;
 var mesh;
-//array of cubes created
-var meshObjects = [];
+
 var WIDTH = window.innerWidth;
 var HEIGHT = window.innerHeight;
-// var raycaster = new THREE.Raycaster();
-// var mouse = new THREE.Vector2(),
-//   intersection;
+
 
 //initial function
 //initializes scene, camera, renderer
@@ -31,6 +28,7 @@ camera = new THREE.PerspectiveCamera(
   1000
 );
 
+//constructor for interactive mouse 
 const interaction = new interactionTest.Interaction(renderer, scene, camera);
 
 //orbit controls to manipulate camera
@@ -59,26 +57,50 @@ for (let i = 0; i < data.length; i++) {
 
   //and ADD point to scene, i times
   scene.add(mesh);
+  //interactive mouse click
   mesh.cursor = "pointer";
   mesh.on("click", function(ev) {
     alert(data[i].name);
+//cube turns white when clicked
+    scene.remove(mesh); //rremove to replace current cube 
+    material = new THREE.MeshBasicMaterial({color:0xffffff});
+    var mesh = new THREE.Mesh(geometry, material); //new cube initialized
+    mesh.position.x = data[i].x; //sets cube with position attributes from JSON file
+    mesh.position.y = data[i].y;
+    mesh.position.z = data[i].z;
+    mesh.scale.x = 0.05; //scales cube size
+    mesh.scale.y = 0.05;
+    mesh.scale.z = 0.05;
+  //and ADD point to scene, i times
+  scene.add(mesh); //add back in the cube but with different material
+    
   });
 
-  //adds cube into array
-}
+  //cube turns pink when rolled over
+  mesh.on("mousemove", function(ev) {
+    scene.remove(mesh); //rremove to replace current cube 
+    material = new THREE.MeshBasicMaterial({color:0xFFC0CB});
+    var mesh = new THREE.Mesh(geometry, material); //new cube initialized
+    mesh.position.x = data[i].x; //sets cube with position attributes from JSON file
+    mesh.position.y = data[i].y;
+    mesh.position.z = data[i].z;
+    mesh.scale.x = 0.05; //scales cube size
+    mesh.scale.y = 0.05;
+    mesh.scale.z = 0.05;
+  //and ADD point to scene, i times
+  scene.add(mesh); //add back in the cube but wit diff material
+});
+
 //initial camera position
 camera.position.z = 5;
+}
 
 
 //RENDERING THE SCENE // -------------------------------------------------------------
 function animate() {
   requestAnimationFrame(animate);
-  // mesh.rotation.y = (mesh.rotation.y + 0.005) % maxRotation;
-
   renderer.render(scene, camera);
-  // render();
-  //   point.rotation.x += 0.01;
-  // point.rotation.y += 0.01;
+
 }
 
 animate();
